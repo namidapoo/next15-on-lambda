@@ -3,7 +3,9 @@ import Image from "next/image";
 const BASE_URL = "https://randomuser.me/api/?results=500";
 
 export default async function Home() {
-  const res = await fetch(BASE_URL);
+  const res = await fetch(BASE_URL, {
+    cache: "no-store",
+  });
   const data = await res.json();
 
   return (
