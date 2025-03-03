@@ -1,7 +1,10 @@
 import Image from "next/image";
 
+const BASE_URL = "https://randomuser.me/api/?results=500";
+
 export default async function Home() {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  const res = await fetch(BASE_URL);
+  const data = await res.json();
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -50,6 +53,7 @@ export default async function Home() {
             Read our docs
           </a>
         </div>
+        <pre>{JSON.stringify(data, null, 2)}</pre>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <a
